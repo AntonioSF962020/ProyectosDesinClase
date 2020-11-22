@@ -5,6 +5,7 @@
  */
 package gestioclientes.dto;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -17,6 +18,7 @@ public class Cliente {
     private String apellidos;
     private Date fecha;
     private String provincia;
+    private SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
 
     public Cliente(String nombre, String apellidos, Date fecha, String provincia) {
         this.nombre = nombre;
@@ -62,7 +64,7 @@ public class Cliente {
         String [] s=new String [4];
         s[0]=nombre;
         s[1]=apellidos;
-        s[2]=fecha.toString();
+        s[2]=sdf.format(fecha);
         s[3]=provincia.toString();
         return s;
     }
