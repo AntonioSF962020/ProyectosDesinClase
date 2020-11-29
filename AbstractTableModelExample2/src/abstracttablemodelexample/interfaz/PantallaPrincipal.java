@@ -8,7 +8,12 @@ package abstracttablemodelexample.interfaz;
 import abstracttablemodelexample.interfaz.tablemodels.TableModelAlumnos;
 import abstracttablemodelexample.beans.Alumno;
 import abstracttablemodelexample.logica.LogicaNegocio;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.RowSorter.SortKey;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -29,7 +34,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     //Utilizando un AbstractTableModel
     private void rellenarTablaAlumnos()
     {
-        jTableAlumnos.setModel(new TableModelAlumnos(logicaNegocio.getListaAlumnos()));
+       
+            jTableAlumnos.setModel(new TableModelAlumnos(logicaNegocio.getListaAlumnos()));
     }
     
     private void rellenarTablaAlumnos2()
