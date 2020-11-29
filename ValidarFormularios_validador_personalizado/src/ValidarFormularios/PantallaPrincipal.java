@@ -9,6 +9,7 @@ import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import org.netbeans.validation.api.builtin.stringvalidation.MayusculasValidacion;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 
@@ -25,7 +26,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         initComponents();
         jButtonAceptar.setEnabled(false);
         ValidationGroup group=validationPanel.getValidationGroup();
-        group.add(jTextFieldNombre, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldNombre, StringValidators.REQUIRE_NON_EMPTY_STRING,new MayusculasValidacion());
            group.add(jTextFieldEdad, StringValidators.REQUIRE_VALID_NUMBER);
           validationPanel.addChangeListener(new ChangeListener() {
             @Override
