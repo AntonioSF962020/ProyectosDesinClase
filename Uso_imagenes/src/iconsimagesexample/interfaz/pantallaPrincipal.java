@@ -19,7 +19,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     public pantallaPrincipal() {
         initComponents();
         
-       // this.setIconImage(new ImageIcon(getClass().getResource("/iconsimagesexample/interfaz/imgs/Pedro_Sánchez_in_2020.jpg")).getImage());
+      
+       this.setIconImage(new ImageIcon(getClass().getResource("/iconsimagesexample/interfaz/imgs/Pedro_Sánchez_in_2020.jpg")).getImage());
     }
 
     /**
@@ -31,12 +32,11 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsimagesexample/interfaz/img/Pedro_Sánchez_in_2020.jpg"))); // NOI18N
-        jLabel1.setToolTipText("");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsimagesexample/interfaz/img/Salvapantallas Astronauta.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -44,14 +44,15 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 485, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -93,6 +94,6 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
