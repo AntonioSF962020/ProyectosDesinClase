@@ -5,6 +5,8 @@
  */
 package proyectoprimeraevaluacion.corredores.gui;
 
+import interfaz.pantallaPrincipal;
+
 /**
  *
  * @author Tony
@@ -32,6 +34,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCorredores = new javax.swing.JMenu();
         jCorredoresAlta = new javax.swing.JMenuItem();
+        jMenuItemSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +61,14 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
         });
         jMenuCorredores.add(jCorredoresAlta);
 
+        jMenuItemSalir.setText("Salir a inicio");
+        jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSalirActionPerformed(evt);
+            }
+        });
+        jMenuCorredores.add(jMenuItemSalir);
+
         jMenuBar1.add(jMenuCorredores);
 
         setJMenuBar(jMenuBar1);
@@ -79,6 +90,13 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
     private void jCorredoresAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCorredoresAltaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCorredoresAltaActionPerformed
+
+    private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
+        pantallaPrincipal pantalla=new pantallaPrincipal();
+        pantallaPrincipalCorredores pantalla2=new pantallaPrincipalCorredores();
+        pantalla.setVisible(true);
+        pantalla2.dispose();
+    }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,6 +138,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
     private javax.swing.JMenuItem jCorredoresAlta;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCorredores;
+    private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
