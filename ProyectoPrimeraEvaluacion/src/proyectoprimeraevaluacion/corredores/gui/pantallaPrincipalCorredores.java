@@ -7,7 +7,9 @@ package proyectoprimeraevaluacion.corredores.gui;
 
 import beans.Corredores;
 import interfaz.pantallaPrincipal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +21,7 @@ import logica.logicaNegocio;
  */
 public class pantallaPrincipalCorredores extends javax.swing.JFrame {
 
+    private SimpleDateFormat sdf=new SimpleDateFormat();
     /**
      * Creates new form pantallaPrincipal
      */
@@ -42,6 +45,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
         jMenuCorredores = new javax.swing.JMenu();
         jCorredoresAlta = new javax.swing.JMenuItem();
         jCorredoresBorrar = new javax.swing.JMenuItem();
+        jMenuItemModificar = new javax.swing.JMenuItem();
         jMenuItemSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,6 +80,14 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
             }
         });
         jMenuCorredores.add(jCorredoresBorrar);
+
+        jMenuItemModificar.setText("Modificar corredor");
+        jMenuItemModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemModificarActionPerformed(evt);
+            }
+        });
+        jMenuCorredores.add(jMenuItemModificar);
 
         jMenuItemSalir.setText("Salir a inicio");
         jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +153,46 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jCorredoresBorrarActionPerformed
 
+    private void jMenuItemModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarActionPerformed
+        int contador=0;
+        ArrayList<Corredores>listaCorredores=logicaNegocio.getListaCorredores();
+        Iterator<Corredores>it=listaCorredores.iterator();
+     DefaultTableModel dtm = (DefaultTableModel) jTableCorredores.getModel();
+        String resultado= JOptionPane.showInputDialog(this,"Introduce el DNI del corredor que deseas modificar");
+       
+         for(Corredores corredor:listaCorredores){
+          
+          if(resultado.equalsIgnoreCase(corredor.getDni())){
+              
+              dtm.removeRow(contador); //Mirar esto
+              
+            
+             String nombre=JOptionPane.showInputDialog(this,"Introduce el nuevo nombre del corredor");
+             String dni=JOptionPane.showInputDialog(this,"Introduce el nuevo nombre del corredor");
+             String fecha=JOptionPane.showInputDialog(this,"Introduce el nuevo nombre del corredor");
+             String direccion=JOptionPane.showInputDialog(this,"Introduce el nuevo nombre del corredor");
+             String tlf=JOptionPane.showInputDialog(this,"Introduce el nuevo nombre del corredor");
+
+             String  [] array=new String[5];
+             
+             array[0]=nombre;
+             array[1]=dni;
+             array[2]=fecha;
+             array[3]=direccion;
+             array[4]=tlf;
+             dtm.addRow(array);
+             
+             jTableCorredores.setModel(dtm);
+      
+            
+          }
+          else
+              contador++;
+
+      }
+         
+    }//GEN-LAST:event_jMenuItemModificarActionPerformed
+
    private void refrescarTabla(){
        DefaultTableModel dtm=new DefaultTableModel();
        dtm.setColumnIdentifiers(new String[]{"Nombre","DNI","Fecha","Dirección","Teléfono"});
@@ -194,6 +246,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
     private javax.swing.JMenuItem jCorredoresBorrar;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCorredores;
+    private javax.swing.JMenuItem jMenuItemModificar;
     private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCorredores;
