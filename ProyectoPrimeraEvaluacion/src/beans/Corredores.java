@@ -5,6 +5,7 @@
  */
 package beans;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -17,6 +18,7 @@ public class Corredores {
     private Date fechaNac;
     private String direccion;
     private int tlf;
+    private SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
 
     public Corredores(String nombre, String dni, Date fechaNac, String direccion, int tlf) {
         this.nombre = nombre;
@@ -57,6 +59,24 @@ public class Corredores {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    public int getTlf() {
+        return tlf;
+    }
+
+    public void setTlf(int tlf) {
+        this.tlf = tlf;
+    }
     
     
+    public String [] toArrayString(){
+        String []s =new String[5];
+        s[0]=nombre;
+        s[1]=dni;
+        s[2]=sdf.format(fechaNac);
+        s[3]=direccion;
+        s[4]=Integer.toString(tlf);
+        
+        return s;
+    }
 }

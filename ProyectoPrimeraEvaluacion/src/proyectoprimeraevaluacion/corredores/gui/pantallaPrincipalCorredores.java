@@ -5,7 +5,11 @@
  */
 package proyectoprimeraevaluacion.corredores.gui;
 
+import beans.Corredores;
 import interfaz.pantallaPrincipal;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import logica.logicaNegocio;
 
 /**
  *
@@ -18,6 +22,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
      */
     public pantallaPrincipalCorredores() {
         initComponents();
+        refrescarTabla();
     }
 
     /**
@@ -30,7 +35,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableCorredores = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCorredores = new javax.swing.JMenu();
         jCorredoresAlta = new javax.swing.JMenuItem();
@@ -38,7 +43,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCorredores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -49,7 +54,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableCorredores);
 
         jMenuCorredores.setText("Corredores");
 
@@ -88,7 +93,11 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCorredoresAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCorredoresAltaActionPerformed
-        // TODO add your handling code here:
+    
+        FormularioAlta alta=new FormularioAlta(this,true);
+        alta.setVisible(true);
+        refrescarTabla();
+      
     }//GEN-LAST:event_jCorredoresAltaActionPerformed
 
     private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
@@ -98,6 +107,18 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
         pantalla2.dispose();
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
+   private void refrescarTabla(){
+       DefaultTableModel dtm=new DefaultTableModel();
+       dtm.setColumnIdentifiers(new String[]{"Nombre","DNI","Fecha","Dirección","Teléfono"});
+      ArrayList<Corredores> listaCorredores=logicaNegocio.getListaCorredores();
+       
+      for(Corredores corredor:listaCorredores){
+          
+          dtm.addRow(corredor.toArrayString());
+      }
+       jTableCorredores.setModel(dtm);
+   }
+   
     /**
      * @param args the command line arguments
      */
@@ -140,6 +161,6 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuCorredores;
     private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableCorredores;
     // End of variables declaration//GEN-END:variables
 }
