@@ -8,6 +8,8 @@ package proyectoprimeraevaluacion.corredores.gui;
 import beans.Corredores;
 import interfaz.pantallaPrincipal;
 import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logica.logicaNegocio;
 
@@ -39,6 +41,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCorredores = new javax.swing.JMenu();
         jCorredoresAlta = new javax.swing.JMenuItem();
+        jCorredoresBorrar = new javax.swing.JMenuItem();
         jMenuItemSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,6 +68,14 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
             }
         });
         jMenuCorredores.add(jCorredoresAlta);
+
+        jCorredoresBorrar.setText("Borrar corredor");
+        jCorredoresBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCorredoresBorrarActionPerformed(evt);
+            }
+        });
+        jMenuCorredores.add(jCorredoresBorrar);
 
         jMenuItemSalir.setText("Salir a inicio");
         jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +117,29 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
         pantalla.setVisible(true);
         pantalla2.dispose();
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
+
+    private void jCorredoresBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCorredoresBorrarActionPerformed
+       int contador=0;
+        ArrayList<Corredores>listaCorredores=logicaNegocio.getListaCorredores();
+        Iterator<Corredores>it=listaCorredores.iterator();
+        DefaultTableModel dtm = (DefaultTableModel) jTableCorredores.getModel();
+        String resultado= JOptionPane.showInputDialog(this,"Introduce el DNI del corredor que deseas borrar","Borrar corredor");
+       
+         for(Corredores corredor:listaCorredores){
+          
+          if(resultado.equalsIgnoreCase(corredor.getDni())){
+            
+             dtm.removeRow(contador);
+              
+            
+          }
+          else
+              contador++;
+
+      }
+         
+       
+    }//GEN-LAST:event_jCorredoresBorrarActionPerformed
 
    private void refrescarTabla(){
        DefaultTableModel dtm=new DefaultTableModel();
@@ -157,6 +191,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jCorredoresAlta;
+    private javax.swing.JMenuItem jCorredoresBorrar;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCorredores;
     private javax.swing.JMenuItem jMenuItemSalir;
