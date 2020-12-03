@@ -19,6 +19,7 @@ import logica.logicaAplicacion;
  */
 public class FormularioAlta extends javax.swing.JDialog {
     private pantallaPrincipalCarreras pantalla=new pantallaPrincipalCarreras();
+    private ArrayList<Corredores>lista=logicaAplicacion.getListaCorredores();
 
 
     /** Creates new form FormularioAlta */
@@ -129,9 +130,11 @@ public class FormularioAlta extends javax.swing.JDialog {
        String lugar=jTextFieldLugar_carrera.getText();
        int num=Integer.parseInt(jTextFieldNumero_participantes.getText());
        
+     
   Carreras carrera=new Carreras(nombre,fecha,lugar,num);
        logicaAplicacion.añadirCarreras(carrera);
        setVisible(false);
+           
      
        
        

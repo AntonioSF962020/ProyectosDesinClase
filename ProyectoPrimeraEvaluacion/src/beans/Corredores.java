@@ -68,7 +68,7 @@ public class Corredores {
         this.tlf = tlf;
     }
     
-    
+   
     public String [] toArrayString(){
         String []s =new String[5];
         s[0]=nombre;

@@ -6,8 +6,10 @@
 package proyectoprimeraevaluacion.carreras.gui;
 
 import beans.Carreras;
+import beans.Corredores;
 import interfaz.pantallaPrincipal;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logica.logicaAplicacion;
 
@@ -90,9 +92,7 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(493, 493, 493))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -124,13 +124,17 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         for(Carreras carrera:listaCarreras){
             
             
+            dtm.addRow(carrera.toArrayString());
             dtm.addColumn("Corredor",carrera.toArrayListCorredores());
-               dtm.addColumn("Dorsal",carrera.generaDorsales());
+            dtm.addColumn("Dorsal",carrera.Generardorsales());
+             
        
             
-        }
         
+              
+        }
         jTableCarreras.setModel(dtm);
+       
 
     }
         

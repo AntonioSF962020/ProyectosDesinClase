@@ -86,22 +86,27 @@ public class Carreras {
            nombre[contador]=c.getNombre();
            contador++;
         }
+       
     
   return nombre;
     }
     
-    public String [] generaDorsales(){
-        
-        int contador=0;
-        String dorsales[]=new String[listaCorredores.size()];
-        for(Corredores c:listaCorredores){
-            dorsales[contador]=String.valueOf((int) (Math.random()*100));
+ 
+ 
+        public String [] Generardorsales(){
+            
+            String[] dorsal=new String[listaCorredores.size()];
+            
+            for(int i=0;i<listaCorredores.size();i++){
+                dorsal[i]=String.valueOf((int)(Math.random()*100));
+            }
+            return dorsal;
         }
-        return dorsales;
+
         
         
     }
   
-}
+
 
 
