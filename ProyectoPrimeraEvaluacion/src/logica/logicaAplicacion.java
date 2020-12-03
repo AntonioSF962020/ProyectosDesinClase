@@ -5,6 +5,7 @@
  */
 package logica;
 
+import beans.Carreras;
 import beans.Corredores;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author Tony
  */
-public class logicaNegocio {
+public class logicaAplicacion {
     
    private static ArrayList<Corredores>listaCorredores=new ArrayList<>();
    
@@ -25,4 +26,13 @@ public class logicaNegocio {
        return listaCorredores;
    }
     
+   private static ArrayList<Carreras> listaCarreras=new ArrayList<>();
+   
+   public static void añadirCarreras(Carreras carrera){
+       listaCarreras.add(carrera);
+   }
+   public static ArrayList<Carreras> getListaCarreras(){
+       
+       return listaCarreras;
+   }
 }

@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import logica.logicaNegocio;
+import logica.logicaAplicacion;
 
 /**
  *
@@ -132,7 +132,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
 
     private void jCorredoresBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCorredoresBorrarActionPerformed
        int contador=0;
-        ArrayList<Corredores>listaCorredores=logicaNegocio.getListaCorredores();
+        ArrayList<Corredores>listaCorredores=logicaAplicacion.getListaCorredores();
         Iterator<Corredores>it=listaCorredores.iterator();
         DefaultTableModel dtm = (DefaultTableModel) jTableCorredores.getModel();
         String resultado= JOptionPane.showInputDialog(this,"Introduce el DNI del corredor que deseas borrar","Borrar corredor");
@@ -155,7 +155,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
 
     private void jMenuItemModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarActionPerformed
         int contador=0;
-        ArrayList<Corredores>listaCorredores=logicaNegocio.getListaCorredores();
+        ArrayList<Corredores>listaCorredores=logicaAplicacion.getListaCorredores();
         Iterator<Corredores>it=listaCorredores.iterator();
      DefaultTableModel dtm = (DefaultTableModel) jTableCorredores.getModel();
         String resultado= JOptionPane.showInputDialog(this,"Introduce el DNI del corredor que deseas modificar");
@@ -196,7 +196,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
    private void refrescarTabla(){
        DefaultTableModel dtm=new DefaultTableModel();
        dtm.setColumnIdentifiers(new String[]{"Nombre","DNI","Fecha","Dirección","Teléfono"});
-      ArrayList<Corredores> listaCorredores=logicaNegocio.getListaCorredores();
+      ArrayList<Corredores> listaCorredores=logicaAplicacion.getListaCorredores();
        
       for(Corredores corredor:listaCorredores){
           

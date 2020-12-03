@@ -5,7 +5,11 @@
  */
 package proyectoprimeraevaluacion.carreras.gui;
 
+import beans.Carreras;
 import interfaz.pantallaPrincipal;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import logica.logicaAplicacion;
 
 /**
  *
@@ -18,6 +22,7 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
      */
     public pantallaPrincipalCarreras() {
         initComponents();
+        refrescarTabla();
     }
 
     /**
@@ -30,15 +35,16 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableCarreras = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCarreras = new javax.swing.JMenu();
         jCarrerasAlta = new javax.swing.JMenuItem();
+        jComenzarCarrera = new javax.swing.JMenuItem();
         jMenuSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCarreras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -49,7 +55,7 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableCarreras);
 
         jMenuCarreras.setText("Carreras");
 
@@ -60,6 +66,9 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
             }
         });
         jMenuCarreras.add(jCarrerasAlta);
+
+        jComenzarCarrera.setText("Comenzar carrera");
+        jMenuCarreras.add(jComenzarCarrera);
 
         jMenuSalir.setText("Salir a inicio");
         jMenuSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -81,14 +90,18 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(493, 493, 493))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCarrerasAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCarrerasAltaActionPerformed
-        // TODO add your handling code here:
+        FormularioAlta formulario=new FormularioAlta(this,true);
+        formulario.setVisible(true);
+        refrescarTabla();
     }//GEN-LAST:event_jCarrerasAltaActionPerformed
 
     private void jMenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalirActionPerformed
@@ -99,47 +112,37 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuSalirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pantallaPrincipalCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pantallaPrincipalCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pantallaPrincipalCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pantallaPrincipalCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void refrescarTabla(){
+        DefaultTableModel dtm=new DefaultTableModel();
+   
+        
+        dtm.setColumnIdentifiers(new String[]{"Nombre","Fecha","Lugar","Número máximo de participantes"});
+       
+        
+        ArrayList<Carreras>listaCarreras=logicaAplicacion.getListaCarreras();
+        
+        for(Carreras carrera:listaCarreras){
+            
+            
+            dtm.addColumn("Corredor",carrera.toArrayListCorredores());
+               dtm.addColumn("Dorsal",carrera.generaDorsales());
+       
+            
         }
-        //</editor-fold>
+        
+        jTableCarreras.setModel(dtm);
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new pantallaPrincipalCarreras().setVisible(true);
-            }
-        });
     }
+        
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jCarrerasAlta;
+    private javax.swing.JMenuItem jComenzarCarrera;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCarreras;
     private javax.swing.JMenuItem jMenuSalir;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableCarreras;
     // End of variables declaration//GEN-END:variables
 }

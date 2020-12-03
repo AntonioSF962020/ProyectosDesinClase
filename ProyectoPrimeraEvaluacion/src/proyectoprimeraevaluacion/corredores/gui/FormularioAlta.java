@@ -7,7 +7,7 @@ package proyectoprimeraevaluacion.corredores.gui;
 
 import beans.Corredores;
 import java.util.Date;
-import logica.logicaNegocio;
+import logica.logicaAplicacion;
 
 /**
  *
@@ -131,7 +131,7 @@ public class FormularioAlta extends javax.swing.JDialog {
         String direccion=jTextFieldDireccion.getText();
         int telefono=Integer.parseInt(jTextFieldTlf.getText());
         Corredores corredores=new Corredores(nombre,dni,fecha,direccion,telefono);
-        logicaNegocio.añadirCorredores(corredores);
+        logicaAplicacion.añadirCorredores(corredores);
         setVisible(false);
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
