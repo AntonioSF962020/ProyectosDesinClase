@@ -42,6 +42,7 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         jMenuCarreras = new javax.swing.JMenu();
         jCarrerasAlta = new javax.swing.JMenuItem();
         jComenzarCarrera = new javax.swing.JMenuItem();
+        jAñadirCorredor = new javax.swing.JMenuItem();
         jMenuSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,6 +78,14 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         });
         jMenuCarreras.add(jComenzarCarrera);
 
+        jAñadirCorredor.setText("Añadir Corredor");
+        jAñadirCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAñadirCorredorActionPerformed(evt);
+            }
+        });
+        jMenuCarreras.add(jAñadirCorredor);
+
         jMenuSalir.setText("Salir a inicio");
         jMenuSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +113,7 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCarrerasAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCarrerasAltaActionPerformed
-        FormularioAlta formulario=new FormularioAlta(this,true);
+        FormularioAltaCarrera formulario=new FormularioAltaCarrera(this,true);
         formulario.setVisible(true);
         refrescarTabla();
     }//GEN-LAST:event_jCarrerasAltaActionPerformed
@@ -136,6 +145,10 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
            
     }//GEN-LAST:event_jComenzarCarreraActionPerformed
 
+    private void jAñadirCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAñadirCorredorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jAñadirCorredorActionPerformed
+
     private void refrescarTabla(){
         DefaultTableModel dtm=new DefaultTableModel();
    
@@ -164,6 +177,7 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jAñadirCorredor;
     private javax.swing.JMenuItem jCarrerasAlta;
     private javax.swing.JMenuItem jComenzarCarrera;
     private javax.swing.JMenuBar jMenuBar1;

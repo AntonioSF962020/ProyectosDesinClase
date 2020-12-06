@@ -17,13 +17,13 @@ import logica.logicaAplicacion;
  *
  * @author Tony
  */
-public class FormularioAlta extends javax.swing.JDialog {
+public class FormularioAltaCarrera extends javax.swing.JDialog {
     private pantallaPrincipalCarreras pantalla=new pantallaPrincipalCarreras();
     private ArrayList<Corredores>lista=logicaAplicacion.getListaCorredores();
 
 
     /** Creates new form FormularioAlta */
-    public FormularioAlta(java.awt.Frame parent, boolean modal) {
+    public FormularioAltaCarrera(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         pantalla=(pantallaPrincipalCarreras)parent;
         initComponents();

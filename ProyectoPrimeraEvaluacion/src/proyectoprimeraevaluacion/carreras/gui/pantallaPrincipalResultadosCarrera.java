@@ -21,7 +21,7 @@ public class pantallaPrincipalResultadosCarrera extends javax.swing.JFrame {
     /** Creates new form pantallaPrincipalResultadosCarrera */
     public pantallaPrincipalResultadosCarrera() {
         initComponents();
-        funcionalidadTabla();
+     
     }
 
     /** This method is called from within the constructor to
@@ -70,18 +70,7 @@ public class pantallaPrincipalResultadosCarrera extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   private void funcionalidadTabla(){
-       DefaultTableModel dtm=new DefaultTableModel();
-       
-       for(Carreras c:listaCarreras){
-           
-          dtm.addColumn("Nombre Corredor",c.toArrayListCorredores());
-         
-        
-       }
-       
-       jTableCarrerasFinalizadas.setModel(dtm);
-   }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
