@@ -70,6 +70,11 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         jMenuCarreras.add(jCarrerasAlta);
 
         jComenzarCarrera.setText("Comenzar carrera");
+        jComenzarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComenzarCarreraActionPerformed(evt);
+            }
+        });
         jMenuCarreras.add(jComenzarCarrera);
 
         jMenuSalir.setText("Salir a inicio");
@@ -88,11 +93,11 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
         );
 
         pack();
@@ -112,6 +117,25 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuSalirActionPerformed
 
+    private void jComenzarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComenzarCarreraActionPerformed
+      
+        
+        
+     
+        
+        
+        int resultado=JOptionPane.showConfirmDialog(this, "¿Deseas terminar la carrera?", "Terminar", JOptionPane.YES_NO_OPTION);
+       
+      
+        
+       if(resultado==JOptionPane.YES_OPTION){
+           pantallaPrincipalResultadosCarrera pantalla=new pantallaPrincipalResultadosCarrera();
+           pantalla.setVisible(true);
+           dispose();
+       }
+           
+    }//GEN-LAST:event_jComenzarCarreraActionPerformed
+
     private void refrescarTabla(){
         DefaultTableModel dtm=new DefaultTableModel();
    
@@ -125,8 +149,7 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
             
             
             dtm.addRow(carrera.toArrayString());
-            dtm.addColumn("Corredor",carrera.toArrayListCorredores());
-            dtm.addColumn("Dorsal",carrera.Generardorsales());
+    
              
        
             

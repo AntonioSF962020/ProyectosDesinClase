@@ -93,7 +93,7 @@ public class Carreras {
     
  
  
-        public String [] Generardorsales(){
+       /* public String [] Generardorsales(){
             
             String[] dorsal=new String[listaCorredores.size()];
             
@@ -101,7 +101,7 @@ public class Carreras {
                 dorsal[i]=String.valueOf((int)(Math.random()*100));
             }
             return dorsal;
-        }
+        } */
 
         
         
