@@ -29,7 +29,7 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
         
         
         initComponents();
-        inicializarLista();
+        
     }
 
     /** This method is called from within the constructor to
@@ -51,8 +51,6 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
         jTextFieldNumero_participantes = new javax.swing.JTextField();
         jButtonAlta_carrera = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLista = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -73,15 +71,7 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText("Formulario alta corredor");
-
-        jLista.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jListaActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Nombre del corredor");
+        jButton2.setText("Formulario registro corredor");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,23 +81,22 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(60, 60, 60)
                         .addComponent(jButtonAlta_carrera))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldNombre_carrera)
                             .addComponent(jSpinnerFecha_carrera, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                             .addComponent(jTextFieldLugar_carrera)
-                            .addComponent(jTextFieldNumero_participantes)
-                            .addComponent(jLista, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jTextFieldNumero_participantes))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -132,13 +121,9 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
                     .addComponent(jTextFieldNumero_participantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAlta_carrera)
                     .addComponent(jButton2))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         pack();
@@ -162,17 +147,6 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
        
     }//GEN-LAST:event_jButtonAlta_carreraActionPerformed
 
-    private void inicializarLista(){
-        ArrayList<Corredores>lista=logicaAplicacion.getListaCorredores();
-        
-        for(Corredores c:lista){
-            jLista.addItem(c.getNombre());
-        }
-    }
-    private void jListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListaActionPerformed
-      
-    }//GEN-LAST:event_jListaActionPerformed
-
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -182,8 +156,6 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JComboBox<String> jLista;
     private javax.swing.JSpinner jSpinnerFecha_carrera;
     private javax.swing.JTextField jTextFieldLugar_carrera;
     private javax.swing.JTextField jTextFieldNombre_carrera;

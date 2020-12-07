@@ -5,6 +5,10 @@
  */
 package proyectoprimeraevaluacion.carreras.gui;
 
+import beans.Corredores;
+import java.util.ArrayList;
+import logica.logicaAplicacion;
+
 /**
  *
  * @author Tony
@@ -17,6 +21,16 @@ public class FormularioAltaCorredor extends javax.swing.JDialog {
     public FormularioAltaCorredor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        inicializarLista();
+    }
+    
+    private void inicializarLista(){
+        ArrayList<Corredores>lista=logicaAplicacion.getListaCorredores();
+        
+        for(Corredores c:lista){
+            
+            jLista.addItem(c.getNombre());
+        }
     }
 
     /**
@@ -30,9 +44,9 @@ public class FormularioAltaCorredor extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldDorsal = new javax.swing.JTextField();
         jButtonAñadir = new javax.swing.JButton();
+        jLista = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -41,6 +55,12 @@ public class FormularioAltaCorredor extends javax.swing.JDialog {
         jLabel2.setText("Dorsal");
 
         jButtonAñadir.setText("Añadir Corredor");
+
+        jLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jListaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,28 +78,32 @@ public class FormularioAltaCorredor extends javax.swing.JDialog {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldNombre)
-                            .addComponent(jTextFieldDorsal, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))))
+                            .addComponent(jTextFieldDorsal, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                            .addComponent(jLista, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(46, 46, 46))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(85, 85, 85)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAñadir)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jListaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,7 +151,7 @@ public class FormularioAltaCorredor extends javax.swing.JDialog {
     private javax.swing.JButton jButtonAñadir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JComboBox<String> jLista;
     private javax.swing.JTextField jTextFieldDorsal;
-    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }

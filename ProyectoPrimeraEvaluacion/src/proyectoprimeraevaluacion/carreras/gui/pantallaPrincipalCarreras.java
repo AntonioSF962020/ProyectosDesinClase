@@ -146,7 +146,9 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
     }//GEN-LAST:event_jComenzarCarreraActionPerformed
 
     private void jAñadirCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAñadirCorredorActionPerformed
-        // TODO add your handling code here:
+        FormularioAltaCorredor alta=new FormularioAltaCorredor(this,true);
+        alta.setVisible(true);
+        
     }//GEN-LAST:event_jAñadirCorredorActionPerformed
 
     private void refrescarTabla(){
