@@ -7,6 +7,7 @@ package logica;
 
 import beans.Carreras;
 import beans.Corredores;
+import beans.NuevosCorredores;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class logicaAplicacion {
     
    private static ArrayList<Corredores>listaCorredores=new ArrayList<>();
+  
 
    
    public static void añadirCorredores(Corredores corredores){
@@ -37,6 +39,19 @@ public class logicaAplicacion {
        return listaCarreras;
    }
 
+   private static ArrayList<NuevosCorredores> nueva_lista=new ArrayList<>();
+   
+   public static void añadirNuevosCorredores(NuevosCorredores nuevo){
+       
+       nueva_lista.add(nuevo);
+       
+   }
+
+    public static ArrayList<NuevosCorredores> getNueva_lista() {
+        return nueva_lista;
+    }
+   
+   
 
 
    

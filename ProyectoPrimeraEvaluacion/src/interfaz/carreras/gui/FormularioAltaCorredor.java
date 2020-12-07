@@ -6,6 +6,7 @@
 package interfaz.carreras.gui;
 
 import beans.Corredores;
+import beans.NuevosCorredores;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import logica.logicaAplicacion;
@@ -80,11 +81,22 @@ public class FormularioAltaCorredor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirActionPerformed
-        ArrayList<Corredores>lista=logicaAplicacion.getListaCorredores();
-        String nombre=jTextFieldNombre.getText();
-               
-               setVisible(false);
-            
+      ArrayList<Corredores> corredor=logicaAplicacion.getListaCorredores();
+         String nombre=jTextFieldNombre.getText();
+         
+         for(Corredores c:corredor){
+             if(!nombre.equalsIgnoreCase(c.getNombre())){
+                 JOptionPane.showMessageDialog(this, "El corredor debe de estar registrado en la aplicación para poder ser dado de alta","Registro",JOptionPane.INFORMATION_MESSAGE);
+             }
+             else{
+                 int dorsal=(int) (Math.random()*100);
+                 
+                 NuevosCorredores nuevo=new NuevosCorredores(nombre,dorsal);
+                 logicaAplicacion.añadirNuevosCorredores(nuevo);
+                 setVisible(false);
+             }
+         }
+             
            
         
         

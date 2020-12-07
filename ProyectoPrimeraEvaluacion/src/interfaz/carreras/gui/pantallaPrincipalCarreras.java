@@ -7,6 +7,7 @@ package interfaz.carreras.gui;
 
 import beans.Carreras;
 import beans.Corredores;
+import beans.NuevosCorredores;
 import interfaz.pantallaPrincipal;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -132,6 +133,7 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         FormularioAltaCarrera formulario=new FormularioAltaCarrera(this,true);
         formulario.setVisible(true);
         refrescarTabla();
+        nuevoCorredor();
       
     }//GEN-LAST:event_jCarrerasAltaActionPerformed
 
@@ -157,23 +159,37 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
 
     private void jAñadirCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAñadirCorredoresActionPerformed
        DefaultTableModel dtm=(DefaultTableModel)jTableCarreras.getModel();
-   
-        JOptionPane.showMessageDialog(this, "Se importarán los corredores registrados y se generará un dorsal para cada uno de ellos","Añadir corredores",JOptionPane.INFORMATION_MESSAGE);
+       
+     ArrayList<Carreras>listaCarreras=logicaAplicacion.getListaCarreras();
+
+          
+        
+        
+     
+  JOptionPane.showMessageDialog(this, "Se importarán los corredores registrados y se generará un dorsal para cada uno de ellos","Añadir corredores",JOptionPane.INFORMATION_MESSAGE);
     
-          ArrayList<Carreras>listaCarreras=logicaAplicacion.getListaCarreras();
-        for(Carreras c:listaCarreras){
+          for(Carreras c:listaCarreras){
+         
             
             dtm.addColumn("Corredores",c.toArrayStringCorredores());
+            
            dtm.addColumn("Dorsal",c.generarDorsales());
-        }
+        
+        
    
+        }
+          jTableCarreras.setModel(dtm);
     
   
     }//GEN-LAST:event_jAñadirCorredoresActionPerformed
 
+    
+        
+    
     private void JAñadirNuevoCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAñadirNuevoCorredorActionPerformed
         FormularioAltaCorredor alta=new FormularioAltaCorredor(this,true);
         alta.setVisible(true);
+        nuevoCorredor();
       
        
     }//GEN-LAST:event_JAñadirNuevoCorredorActionPerformed
@@ -192,17 +208,26 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
             
             
             dtm.addRow(carrera.toArrayString());
-           
-    
-             
-       
-            
-        
+ 
               
         }
         jTableCarreras.setModel(dtm);
        
 
+    }
+    
+    private void nuevoCorredor(){
+        
+        ArrayList<NuevosCorredores> lista_nuevo=logicaAplicacion.getNueva_lista();
+        
+        DefaultTableModel dtm=(DefaultTableModel)jTableCarreras.getModel();
+        
+        for(NuevosCorredores nuevo:lista_nuevo){
+            dtm.addColumn("Nuevo",nuevo.toArrayString());
+        }
+        
+        jTableCarreras.setModel(dtm);
+        
     }
         
     
