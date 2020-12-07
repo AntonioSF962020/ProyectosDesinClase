@@ -23,8 +23,7 @@ public class Carreras {
     private Date fechaCarrera;
     private String lugar;
     private int maximo;
-   private ArrayList<Corredores>listaCorredores=new ArrayList();
-   private int dorsal;
+   
    
     private SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
 
@@ -35,6 +34,7 @@ public class Carreras {
         this.maximo = maximo;
      
     }
+ 
 
     public String getNombre() {
         return nombre;
@@ -68,21 +68,7 @@ public class Carreras {
         this.maximo = maximo;
     }
 
-    public ArrayList<Corredores> getListaCorredores() {
-        return listaCorredores;
-    }
-
-    public void setListaCorredores(ArrayList<Corredores> listaCorredores) {
-        this.listaCorredores = listaCorredores;
-    }
-
-    public int getDorsal() {
-        return dorsal;
-    }
-
-    public void setDorsal(int dorsal) {
-        this.dorsal = dorsal;
-    }
+  
     
     
     public String [] toArrayString(){
