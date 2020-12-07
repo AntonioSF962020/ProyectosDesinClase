@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectoprimeraevaluacion.corredores.gui;
+package interfaz.corredores.gui;
 
 import beans.Corredores;
 import java.util.Date;

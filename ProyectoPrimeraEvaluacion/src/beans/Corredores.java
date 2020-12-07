@@ -27,6 +27,10 @@ public class Corredores {
         this.direccion = direccion;
         this.tlf = tlf;
     }
+    
+    public Corredores(String nombre){
+        this.nombre=nombre;
+    }
 
     public String getNombre() {
         return nombre;
@@ -80,6 +84,12 @@ public class Corredores {
         return s;
     }
     
+    public String [] toArrayStringCorredor(){
+        String [] s=new String[1];
+        s[0]=nombre;
+          return s;
+    }
+  
     
    
 }

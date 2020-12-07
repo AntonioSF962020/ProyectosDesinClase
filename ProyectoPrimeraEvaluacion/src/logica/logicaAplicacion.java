@@ -17,6 +17,7 @@ import java.util.List;
 public class logicaAplicacion {
     
    private static ArrayList<Corredores>listaCorredores=new ArrayList<>();
+
    
    public static void añadirCorredores(Corredores corredores){
        listaCorredores.add(corredores);
@@ -35,4 +36,8 @@ public class logicaAplicacion {
        
        return listaCarreras;
    }
+
+
+
+   
 }

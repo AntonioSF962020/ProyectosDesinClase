@@ -23,6 +23,7 @@ public class Carreras {
     private Date fechaCarrera;
     private String lugar;
     private int maximo;
+    private ArrayList<Corredores>listaCorredores=logicaAplicacion.getListaCorredores();
    
    
     private SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
@@ -82,8 +83,28 @@ public class Carreras {
     }
     
   
-    
+    public String [] toArrayStringCorredores(){
+        String [] nombre=new String [listaCorredores.size()];
+        int contador=0;
+        for(Corredores c:listaCorredores){
+            nombre[contador]=c.getNombre();
+            contador++;
+        }
+        return nombre;
+    }
  
+    public String [] generarDorsales(){
+        
+        String dorsal[]=new String [listaCorredores.size()];
+        
+        int contador=0;
+        
+        for(Corredores c:listaCorredores){
+            dorsal[contador]=String.valueOf((int)(Math.random()*100));
+            contador++;
+        }
+        return dorsal;
+    }
     }
     
  

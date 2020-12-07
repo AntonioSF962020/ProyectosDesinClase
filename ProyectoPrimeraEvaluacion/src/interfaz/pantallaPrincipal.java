@@ -6,8 +6,8 @@
 package interfaz;
 
 import javax.swing.JOptionPane;
-import proyectoprimeraevaluacion.carreras.gui.pantallaPrincipalCarreras;
-import proyectoprimeraevaluacion.corredores.gui.pantallaPrincipalCorredores;
+import interfaz.carreras.gui.pantallaPrincipalCarreras;
+import interfaz.corredores.gui.pantallaPrincipalCorredores;
 
 /**
  *

@@ -35,6 +35,29 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuCorredores">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Corredores"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jA&#xf1;adirCorredores">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="A&#xf1;adir corredores"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jA&#xf1;adirCorredoresActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="JA&#xf1;adirNuevoCorredor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="A&#xf1;adir un nuevo corredor"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JA&#xf1;adirNuevoCorredorActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>

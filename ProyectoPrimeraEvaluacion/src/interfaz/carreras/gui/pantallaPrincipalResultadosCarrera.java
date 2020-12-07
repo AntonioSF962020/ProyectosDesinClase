@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package proyectoprimeraevaluacion.carreras.gui;
+package interfaz.carreras.gui;
 
 import beans.Carreras;
 import java.util.ArrayList;

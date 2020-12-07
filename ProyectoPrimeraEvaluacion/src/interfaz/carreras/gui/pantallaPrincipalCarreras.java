@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectoprimeraevaluacion.carreras.gui;
+package interfaz.carreras.gui;
 
 import beans.Carreras;
 import beans.Corredores;
@@ -25,6 +25,8 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
     public pantallaPrincipalCarreras() {
         initComponents();
         refrescarTabla();
+    
+          
     }
 
     /**
@@ -43,6 +45,9 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         jCarrerasAlta = new javax.swing.JMenuItem();
         jComenzarCarrera = new javax.swing.JMenuItem();
         jMenuSalir = new javax.swing.JMenuItem();
+        jMenuCorredores = new javax.swing.JMenu();
+        jAñadirCorredores = new javax.swing.JMenuItem();
+        JAñadirNuevoCorredor = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +92,26 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuCarreras);
 
+        jMenuCorredores.setText("Corredores");
+
+        jAñadirCorredores.setText("Añadir corredores");
+        jAñadirCorredores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAñadirCorredoresActionPerformed(evt);
+            }
+        });
+        jMenuCorredores.add(jAñadirCorredores);
+
+        JAñadirNuevoCorredor.setText("Añadir un nuevo corredor");
+        JAñadirNuevoCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JAñadirNuevoCorredorActionPerformed(evt);
+            }
+        });
+        jMenuCorredores.add(JAñadirNuevoCorredor);
+
+        jMenuBar1.add(jMenuCorredores);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -107,6 +132,7 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         FormularioAltaCarrera formulario=new FormularioAltaCarrera(this,true);
         formulario.setVisible(true);
         refrescarTabla();
+      
     }//GEN-LAST:event_jCarrerasAltaActionPerformed
 
     private void jMenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalirActionPerformed
@@ -119,22 +145,39 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
 
     private void jComenzarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComenzarCarreraActionPerformed
       
+       int resultado=JOptionPane.showConfirmDialog(this, "¿Deseas terminar la carrera?", "Terminar", JOptionPane.YES_NO_OPTION);
         
-        
-     
-        
-        
-        int resultado=JOptionPane.showConfirmDialog(this, "¿Deseas terminar la carrera?", "Terminar", JOptionPane.YES_NO_OPTION);
-       
-      
-        
-       if(resultado==JOptionPane.YES_OPTION){
+        if(resultado==JOptionPane.YES_OPTION){
            pantallaPrincipalResultadosCarrera pantalla=new pantallaPrincipalResultadosCarrera();
            pantalla.setVisible(true);
            dispose();
        }
            
     }//GEN-LAST:event_jComenzarCarreraActionPerformed
+
+    private void jAñadirCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAñadirCorredoresActionPerformed
+       DefaultTableModel dtm=(DefaultTableModel)jTableCarreras.getModel();
+   
+        JOptionPane.showMessageDialog(this, "Se importarán los corredores registrados y se generará un dorsal para cada uno de ellos","Añadir corredores",JOptionPane.INFORMATION_MESSAGE);
+    
+          ArrayList<Carreras>listaCarreras=logicaAplicacion.getListaCarreras();
+        for(Carreras c:listaCarreras){
+            
+            dtm.addColumn("Corredores",c.toArrayStringCorredores());
+           dtm.addColumn("Dorsal",c.generarDorsales());
+        }
+   
+    
+  
+    }//GEN-LAST:event_jAñadirCorredoresActionPerformed
+
+    private void JAñadirNuevoCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAñadirNuevoCorredorActionPerformed
+        FormularioAltaCorredor alta=new FormularioAltaCorredor(this,true);
+        alta.setVisible(true);
+      
+       
+    }//GEN-LAST:event_JAñadirNuevoCorredorActionPerformed
+
 
     private void refrescarTabla(){
         DefaultTableModel dtm=new DefaultTableModel();
@@ -165,10 +208,13 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JAñadirNuevoCorredor;
+    private javax.swing.JMenuItem jAñadirCorredores;
     private javax.swing.JMenuItem jCarrerasAlta;
     private javax.swing.JMenuItem jComenzarCarrera;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCarreras;
+    private javax.swing.JMenu jMenuCorredores;
     private javax.swing.JMenuItem jMenuSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCarreras;
