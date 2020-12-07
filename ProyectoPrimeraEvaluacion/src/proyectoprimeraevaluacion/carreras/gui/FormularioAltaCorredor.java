@@ -55,6 +55,11 @@ public class FormularioAltaCorredor extends javax.swing.JDialog {
         jLabel2.setText("Dorsal");
 
         jButtonAñadir.setText("Añadir Corredor");
+        jButtonAñadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAñadirActionPerformed(evt);
+            }
+        });
 
         jLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +109,11 @@ public class FormularioAltaCorredor extends javax.swing.JDialog {
     private void jListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jListaActionPerformed
+
+    private void jButtonAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirActionPerformed
+       
+       
+    }//GEN-LAST:event_jButtonAñadirActionPerformed
 
     /**
      * @param args the command line arguments
