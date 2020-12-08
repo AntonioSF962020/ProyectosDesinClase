@@ -6,13 +6,18 @@
 package interfaz.corredores.gui;
 
 import beans.Corredores;
+import interfaz.corredores.tablemodels.TableModelCorredores;
 import interfaz.pantallaPrincipal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import logica.logicaAplicacion;
 
 /**
@@ -27,6 +32,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
      */
     public pantallaPrincipalCorredores() {
         initComponents();
+       rellenarTablaCorredores();
         refrescarTabla();
     }
 
@@ -114,11 +120,23 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void rellenarTablaCorredores()
+    {
+        TableModelCorredores tma=new TableModelCorredores(logicaAplicacion.getListaCorredores());
+      
+        
+        jTableCorredores.setModel(tma);
+        TableRowSorter<TableModelCorredores> sorter= new TableRowSorter<>(tma);
+           jTableCorredores.setRowSorter(sorter);
+           List<RowSorter.SortKey> sortkeys=new ArrayList<>();
+           sortkeys.add(new RowSorter.SortKey(0,SortOrder.ASCENDING));
+         sorter.setSortKeys(sortkeys);
+    }
     private void jCorredoresAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCorredoresAltaActionPerformed
     
         FormularioAlta alta=new FormularioAlta(this,true);
         alta.setVisible(true);
+        //rellenarTablaCorredores();
         refrescarTabla();
       
     }//GEN-LAST:event_jCorredoresAltaActionPerformed
