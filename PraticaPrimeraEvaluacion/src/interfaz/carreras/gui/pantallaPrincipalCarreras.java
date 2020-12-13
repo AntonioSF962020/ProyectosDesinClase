@@ -147,14 +147,11 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
 
     private void jComenzarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComenzarCarreraActionPerformed
       
-       int resultado=JOptionPane.showConfirmDialog(this, "¿Deseas terminar la carrera?", "Terminar", JOptionPane.YES_NO_OPTION);
-        
-        if(resultado==JOptionPane.YES_OPTION){
-           pantallaPrincipalResultadosCarrera pantalla=new pantallaPrincipalResultadosCarrera();
-           pantalla.setVisible(true);
-           dispose();
-       }
-           
+    String resultado=JOptionPane.showInputDialog(this,"Introduce el nombre de la carrera a comenzar","Comenzar Carrera");
+    
+    PantallaTemporizador pantalla=new PantallaTemporizador();
+    pantalla.setVisible(true);
+    
     }//GEN-LAST:event_jComenzarCarreraActionPerformed
 
     private void jAñadirCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAñadirCorredoresActionPerformed
