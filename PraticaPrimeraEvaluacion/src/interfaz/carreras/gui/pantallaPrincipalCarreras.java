@@ -8,11 +8,18 @@ package interfaz.carreras.gui;
 import beans.Carreras;
 import beans.Corredores;
 import beans.NuevosCorredores;
+import interfaz.corredores.tablemodels.TableModelCarreras;
+import interfaz.corredores.tablemodels.TableModelCorredores;
 import interfaz.pantallaPrincipal;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import logica.logicaAplicacion;
 
 /**
@@ -20,13 +27,14 @@ import logica.logicaAplicacion;
  * @author Tony
  */
 public class pantallaPrincipalCarreras extends javax.swing.JFrame {
-
+      private TableRowSorter<TableModelCarreras> sorter;
     /**
      * Creates new form pantallaPrincipalCarreras
      */
     public pantallaPrincipalCarreras() {
         initComponents();
-        refrescarTabla();
+        rellenarTablaCarreras();
+       
     
           
     }
@@ -42,6 +50,8 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCarreras = new javax.swing.JTable();
+        jButtonFiltrar = new javax.swing.JButton();
+        jTextFieldFiltrar = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCarreras = new javax.swing.JMenu();
         jCarrerasAlta = new javax.swing.JMenuItem();
@@ -67,6 +77,13 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTableCarreras);
+
+        jButtonFiltrar.setText("Filtrar");
+        jButtonFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFiltrarActionPerformed(evt);
+            }
+        });
 
         jMenuCarreras.setText("Carreras");
 
@@ -139,10 +156,22 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonFiltrar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonFiltrar)
+                    .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 115, Short.MAX_VALUE))
         );
 
         pack();
@@ -272,6 +301,23 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_jModificarCarreraActionPerformed
 
+    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
+         RowFilter<TableModelCarreras,Integer> rf=RowFilter.regexFilter(jTextFieldFiltrar.getText(),0);
+        sorter.setRowFilter(rf);
+    }//GEN-LAST:event_jButtonFiltrarActionPerformed
+
+     private void rellenarTablaCarreras()
+    {
+        TableModelCarreras tma=new TableModelCarreras(logicaAplicacion.getListaCarreras());
+      
+        
+        jTableCarreras.setModel(tma);
+      sorter= new TableRowSorter<>(tma);
+           jTableCarreras.setRowSorter(sorter);
+           List<RowSorter.SortKey> sortkeys=new ArrayList<>();
+           sortkeys.add(new RowSorter.SortKey(0,SortOrder.ASCENDING));
+         sorter.setSortKeys(sortkeys);
+    }
 
     private void refrescarTabla(){
         DefaultTableModel dtm=new DefaultTableModel();
@@ -314,6 +360,7 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
     private javax.swing.JMenuItem JAñadirNuevoCorredor;
     private javax.swing.JMenuItem jAñadirCorredores;
     private javax.swing.JMenuItem jBorrarCarrera;
+    private javax.swing.JButton jButtonFiltrar;
     private javax.swing.JMenuItem jCarrerasAlta;
     private javax.swing.JMenuItem jComenzarCarrera;
     private javax.swing.JMenuBar jMenuBar1;
@@ -323,5 +370,6 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
     private javax.swing.JMenuItem jModificarCarrera;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCarreras;
+    private javax.swing.JTextField jTextFieldFiltrar;
     // End of variables declaration//GEN-END:variables
 }

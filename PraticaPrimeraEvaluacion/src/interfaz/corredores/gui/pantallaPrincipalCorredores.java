@@ -35,7 +35,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
     public pantallaPrincipalCorredores() {
         initComponents();
        rellenarTablaCorredores();
-        refrescarTabla();
+     
     }
 
     /**
