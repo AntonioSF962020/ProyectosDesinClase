@@ -97,11 +97,26 @@ public class FormularioAltaCorredor extends javax.swing.JDialog {
              }
          }
              
+             if(validarFormulario()){
+              JOptionPane.showMessageDialog(this, "Formulario correcto", "titulo",JOptionPane.INFORMATION_MESSAGE);
+        }
+         
            
         
         
     }//GEN-LAST:event_jButtonAñadirActionPerformed
 
+     private boolean validarFormulario(){
+        String nombre=jTextFieldNombre.getText();
+        
+        if(nombre==null ||"".equals(nombre)){
+            JOptionPane.showMessageDialog(this, "El campo no puede ser vacío", "error",JOptionPane.ERROR_MESSAGE);
+        return false;
+        }
+        
+      
+      return true;
+       }
     /**
      * @param args the command line arguments
      */

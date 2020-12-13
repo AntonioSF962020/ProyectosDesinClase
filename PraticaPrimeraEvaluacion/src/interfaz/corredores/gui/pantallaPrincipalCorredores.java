@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +28,7 @@ import logica.logicaAplicacion;
 public class pantallaPrincipalCorredores extends javax.swing.JFrame {
 
     private SimpleDateFormat sdf=new SimpleDateFormat();
+      private TableRowSorter<TableModelCorredores> sorter;
     /**
      * Creates new form pantallaPrincipal
      */
@@ -47,6 +49,8 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCorredores = new javax.swing.JTable();
+        jButtonFiltrar = new javax.swing.JButton();
+        jTextFieldFiltrar = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCorredores = new javax.swing.JMenu();
         jCorredoresAlta = new javax.swing.JMenuItem();
@@ -68,6 +72,13 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTableCorredores);
+
+        jButtonFiltrar.setText("Filtrar");
+        jButtonFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFiltrarActionPerformed(evt);
+            }
+        });
 
         jMenuCorredores.setText("Corredores");
 
@@ -112,10 +123,22 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonFiltrar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonFiltrar)
+                    .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 159, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,7 +149,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
       
         
         jTableCorredores.setModel(tma);
-        TableRowSorter<TableModelCorredores> sorter= new TableRowSorter<>(tma);
+      sorter= new TableRowSorter<>(tma);
            jTableCorredores.setRowSorter(sorter);
            List<RowSorter.SortKey> sortkeys=new ArrayList<>();
            sortkeys.add(new RowSorter.SortKey(0,SortOrder.ASCENDING));
@@ -211,6 +234,11 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
          
     }//GEN-LAST:event_jMenuItemModificarActionPerformed
 
+    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
+           RowFilter<TableModelCorredores,Integer> rf=RowFilter.regexFilter(jTextFieldFiltrar.getText(),0);
+        sorter.setRowFilter(rf);
+    }//GEN-LAST:event_jButtonFiltrarActionPerformed
+
    private void refrescarTabla(){
        DefaultTableModel dtm=new DefaultTableModel();
        dtm.setColumnIdentifiers(new String[]{"Nombre","DNI","Fecha","Dirección","Teléfono"});
@@ -225,6 +253,7 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonFiltrar;
     private javax.swing.JMenuItem jCorredoresAlta;
     private javax.swing.JMenuItem jCorredoresBorrar;
     private javax.swing.JMenuBar jMenuBar1;
@@ -233,5 +262,6 @@ public class pantallaPrincipalCorredores extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCorredores;
+    private javax.swing.JTextField jTextFieldFiltrar;
     // End of variables declaration//GEN-END:variables
 }

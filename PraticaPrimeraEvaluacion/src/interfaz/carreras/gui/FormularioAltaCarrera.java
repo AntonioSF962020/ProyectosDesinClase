@@ -8,6 +8,7 @@ package interfaz.carreras.gui;
 
 import beans.Carreras;
 import beans.Corredores;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -92,12 +93,16 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldNombre_carrera)
-                            .addComponent(jSpinnerFecha_carrera, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                            .addComponent(jTextFieldLugar_carrera)
-                            .addComponent(jTextFieldNumero_participantes))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldNombre_carrera, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldLugar_carrera)
+                                    .addComponent(jTextFieldNumero_participantes))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jSpinnerFecha_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -130,24 +135,60 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAlta_carreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlta_carreraActionPerformed
-       String nombre=jTextFieldNombre_carrera.getText();
+      
+        if(validarFormulario()){
+              JOptionPane.showMessageDialog(this, "Formulario correcto", "titulo",JOptionPane.INFORMATION_MESSAGE);
+        }
+  
+        
+        String nombre=jTextFieldNombre_carrera.getText();
        Date fecha=(Date)jSpinnerFecha_carrera.getValue();
        String lugar=jTextFieldLugar_carrera.getText();
        int num=Integer.parseInt(jTextFieldNumero_participantes.getText());
        
      
+       
   Carreras carrera=new Carreras(nombre,fecha,lugar,num);
        logicaAplicacion.añadirCarreras(carrera);
        setVisible(false);
            
      
        
-       
      
        
     }//GEN-LAST:event_jButtonAlta_carreraActionPerformed
 
   
+    private boolean validarFormulario(){
+        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+        String nombre=jTextFieldNombre_carrera.getText();
+      
+        String lugar=jTextFieldLugar_carrera.getText();
+        if(nombre==null ||"".equals(nombre)){
+            JOptionPane.showMessageDialog(this, "El campo no puede ser vacío", "error",JOptionPane.ERROR_MESSAGE);
+        return false;
+        }
+        
+        
+         if(lugar==null ||"".equals(nombre)){
+            JOptionPane.showMessageDialog(this, "El campo no puede ser vacío", "error",JOptionPane.ERROR_MESSAGE);
+        return false;
+        }
+        try{
+        Integer.parseInt(jTextFieldNumero_participantes.getText());
+       }catch(NumberFormatException e){
+             JOptionPane.showMessageDialog(this, "El campo edad debe de ser un entero", "error",JOptionPane.ERROR_MESSAGE);
+      return false;
+       }
+          
+       
+       
+        
+
+        
+      return true;
+       }
+      
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;

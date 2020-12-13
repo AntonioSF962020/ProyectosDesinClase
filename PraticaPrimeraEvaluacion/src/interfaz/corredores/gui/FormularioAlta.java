@@ -7,6 +7,7 @@ package interfaz.corredores.gui;
 
 import beans.Corredores;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import logica.logicaAplicacion;
 
 /**
@@ -133,8 +134,42 @@ public class FormularioAlta extends javax.swing.JDialog {
         Corredores corredores=new Corredores(nombre,dni,fecha,direccion,telefono);
         logicaAplicacion.añadirCorredores(corredores);
         setVisible(false);
+        
+        
+         if(validarFormulario()){
+              JOptionPane.showMessageDialog(this, "Formulario correcto", "titulo",JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
+      private boolean validarFormulario(){
+        String nombre=jTextFieldNombre.getText();
+        String dni=jTextFieldDni.getText();
+        String direccion=jTextFieldDireccion.getText();
+        
+        
+        if(nombre==null ||"".equals(nombre)){
+            JOptionPane.showMessageDialog(this, "El campo no puede ser vacío", "error",JOptionPane.ERROR_MESSAGE);
+        return false;
+        }
+        
+          
+        if(dni==null ||"".equals(nombre)){
+            JOptionPane.showMessageDialog(this, "El campo no puede ser vacío", "error",JOptionPane.ERROR_MESSAGE);
+        return false;
+        }
+        
+           if(direccion==null ||"".equals(nombre)){
+            JOptionPane.showMessageDialog(this, "El campo no puede ser vacío", "error",JOptionPane.ERROR_MESSAGE);
+        return false;
+        }
+       try{
+        Integer.parseInt(jTextFieldTlf.getText());
+       }catch(NumberFormatException e){
+             JOptionPane.showMessageDialog(this, "El campo Teléfono debe de ser un entero", "error",JOptionPane.ERROR_MESSAGE);
+      return false;
+       }
+      return true;
+       }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlta;

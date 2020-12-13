@@ -10,6 +10,7 @@ import beans.Corredores;
 import beans.NuevosCorredores;
 import interfaz.pantallaPrincipal;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logica.logicaAplicacion;
@@ -44,6 +45,8 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCarreras = new javax.swing.JMenu();
         jCarrerasAlta = new javax.swing.JMenuItem();
+        jBorrarCarrera = new javax.swing.JMenuItem();
+        jModificarCarrera = new javax.swing.JMenuItem();
         jComenzarCarrera = new javax.swing.JMenuItem();
         jMenuSalir = new javax.swing.JMenuItem();
         jMenuCorredores = new javax.swing.JMenu();
@@ -74,6 +77,22 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
             }
         });
         jMenuCarreras.add(jCarrerasAlta);
+
+        jBorrarCarrera.setText("Borrar carrera");
+        jBorrarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBorrarCarreraActionPerformed(evt);
+            }
+        });
+        jMenuCarreras.add(jBorrarCarrera);
+
+        jModificarCarrera.setText("Modificar carrera");
+        jModificarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jModificarCarreraActionPerformed(evt);
+            }
+        });
+        jMenuCarreras.add(jModificarCarrera);
 
         jComenzarCarrera.setText("Comenzar carrera");
         jComenzarCarrera.addActionListener(new java.awt.event.ActionListener() {
@@ -192,6 +211,67 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
        
     }//GEN-LAST:event_JAñadirNuevoCorredorActionPerformed
 
+    private void jBorrarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBorrarCarreraActionPerformed
+        int contador=0;
+        ArrayList<Carreras>listaCarreras=logicaAplicacion.getListaCarreras();
+        Iterator<Carreras>it=listaCarreras.iterator();
+        DefaultTableModel dtm = (DefaultTableModel) jTableCarreras.getModel();
+        String resultado= JOptionPane.showInputDialog(this,"Introduce el nombre de la carrera que deseas borrar","Borrar carrera");
+       
+         for(Carreras carrera:listaCarreras){
+          
+          if(resultado.equalsIgnoreCase(carrera.getNombre())){
+            
+             dtm.removeRow(contador);
+              
+            
+          }
+          else
+              contador++;
+
+      }
+         
+    }//GEN-LAST:event_jBorrarCarreraActionPerformed
+
+    private void jModificarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jModificarCarreraActionPerformed
+         int contador=0;
+        ArrayList<Carreras>listaCarreras=logicaAplicacion.getListaCarreras();
+        Iterator<Carreras>it=listaCarreras.iterator();
+        DefaultTableModel dtm = (DefaultTableModel) jTableCarreras.getModel();
+        String resultado= JOptionPane.showInputDialog(this,"Introduce el nombre de la carrera que deseas borrar","Borrar carrera");
+       
+         for(Carreras carrera:listaCarreras){
+          
+          if(resultado.equalsIgnoreCase(carrera.getNombre())){
+            
+                  dtm.removeRow(contador); 
+              
+            
+             String nombre=JOptionPane.showInputDialog(this,"Introduce el nuevo nombre del corredor");
+            
+             String fecha=JOptionPane.showInputDialog(this,"Introduce el nuevo nombre del corredor");
+             String lugar=JOptionPane.showInputDialog(this,"Introduce el nuevo nombre del corredor");
+             String numero=JOptionPane.showInputDialog(this,"Introduce el nuevo nombre del corredor");
+
+             String  [] array=new String[4];
+             
+             array[0]=nombre;
+             array[1]=fecha;
+             array[2]=lugar;
+             array[3]=numero;
+             
+             dtm.addRow(array);
+             
+             jTableCarreras.setModel(dtm);
+              
+            
+          }
+          else
+              contador++;
+
+      }
+    }//GEN-LAST:event_jModificarCarreraActionPerformed
+
 
     private void refrescarTabla(){
         DefaultTableModel dtm=new DefaultTableModel();
@@ -233,12 +313,14 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JAñadirNuevoCorredor;
     private javax.swing.JMenuItem jAñadirCorredores;
+    private javax.swing.JMenuItem jBorrarCarrera;
     private javax.swing.JMenuItem jCarrerasAlta;
     private javax.swing.JMenuItem jComenzarCarrera;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCarreras;
     private javax.swing.JMenu jMenuCorredores;
     private javax.swing.JMenuItem jMenuSalir;
+    private javax.swing.JMenuItem jModificarCarrera;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCarreras;
     // End of variables declaration//GEN-END:variables
