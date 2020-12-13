@@ -5,17 +5,30 @@
  */
 package interfaz.carreras.gui;
 
+import componentepracticaprimeraevaluacion.TemporizadorListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+
 /**
  *
  * @author Tony
  */
 public class PantallaTemporizador extends javax.swing.JFrame {
-
+    
+    private final SimpleDateFormat sdf24h = new SimpleDateFormat("HH:mm:ss");
+private Timer t;
     /**
      * Creates new form PantallaTemporizador
      */
     public PantallaTemporizador() {
         initComponents();
+      jPanelTemporizador1.setTemporizadorListener(new TemporizadorListener() {
+            @Override
+            public void parar() {
+System.out.println("efsfsdfds");            }
+        });
     }
 
     /**
@@ -27,29 +40,34 @@ public class PantallaTemporizador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        relojDigital1 = new relojdigital.RelojDigital();
+        labelNombreCarrera = new java.awt.Label();
+        jPanelTemporizador1 = new componentepracticaprimeraevaluacion.JPanelTemporizador();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        relojDigital1.setFocusable(false);
-        relojDigital1.setMaximumSize(new java.awt.Dimension(0, 0));
-        relojDigital1.setSize(new java.awt.Dimension(0, 0));
+        labelNombreCarrera.setText("label1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(labelNombreCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(296, Short.MAX_VALUE)
-                .addComponent(relojDigital1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(285, 285, 285))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelTemporizador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(relojDigital1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(labelNombreCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(jPanelTemporizador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
@@ -89,8 +107,13 @@ public class PantallaTemporizador extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void comprobarNombre(String nombre){
+        labelNombreCarrera.setText("La " + nombre + " está en marcha") ;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private relojdigital.RelojDigital relojDigital1;
+    private componentepracticaprimeraevaluacion.JPanelTemporizador jPanelTemporizador1;
+    private java.awt.Label labelNombreCarrera;
     // End of variables declaration//GEN-END:variables
 }

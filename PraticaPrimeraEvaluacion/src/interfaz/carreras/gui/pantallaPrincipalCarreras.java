@@ -150,6 +150,7 @@ public class pantallaPrincipalCarreras extends javax.swing.JFrame {
     String resultado=JOptionPane.showInputDialog(this,"Introduce el nombre de la carrera a comenzar","Comenzar Carrera");
     
     PantallaTemporizador pantalla=new PantallaTemporizador();
+    pantalla.comprobarNombre(resultado);
     pantalla.setVisible(true);
     
     }//GEN-LAST:event_jComenzarCarreraActionPerformed
