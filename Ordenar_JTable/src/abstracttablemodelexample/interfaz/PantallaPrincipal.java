@@ -10,6 +10,7 @@ import abstracttablemodelexample.beans.Alumno;
 import abstracttablemodelexample.logica.LogicaNegocio;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.RowFilter;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +23,7 @@ import javax.swing.table.TableRowSorter;
 public class PantallaPrincipal extends javax.swing.JFrame {
 
     private LogicaNegocio logicaNegocio = new LogicaNegocio();
+      private TableRowSorter<TableModelAlumnos> sorter;
     
     /**
      * Creates new form PantallaPrincipal
@@ -36,12 +38,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     {
         TableModelAlumnos tma=new TableModelAlumnos(logicaNegocio.getListaAlumnos());
         jTableAlumnos.setModel(tma);
-        TableRowSorter<TableModelAlumnos> sorter= new TableRowSorter<>(tma);
+        sorter= new TableRowSorter<>(tma);
            jTableAlumnos.setRowSorter(sorter);
            List<RowSorter.SortKey> sortkeys=new ArrayList<>();
-           sortkeys.add(new RowSorter.SortKey(0,SortOrder.DESCENDING));
+           sortkeys.add(new RowSorter.SortKey(0,SortOrder.ASCENDING));
          sorter.setSortKeys(sortkeys);
-    }
+          }
     
     private void rellenarTablaAlumnos2()
     {
@@ -72,6 +74,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jTableAlumnos = new javax.swing.JTable();
         jLabelSeleccionado = new javax.swing.JLabel();
         jButtonAceptar = new javax.swing.JButton();
+        jTextFieldFiltrar = new javax.swing.JTextField();
+        jButtonFiltrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,16 +101,27 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonFiltrar.setText("Filtrar");
+        jButtonFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFiltrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(jLabelSeleccionado)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAceptar)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonFiltrar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -116,7 +131,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSeleccionado)
-                    .addComponent(jButtonAceptar))
+                    .addComponent(jButtonAceptar)
+                    .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonFiltrar))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -127,6 +144,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         int seleccionado=jTableAlumnos.convertRowIndexToModel(jTableAlumnos.getSelectedRow());
         jLabelSeleccionado.setText(logicaNegocio.getListaAlumnos().get(seleccionado).getNombre());
     }//GEN-LAST:event_jButtonAceptarActionPerformed
+
+    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
+     RowFilter<TableModelAlumnos,Integer> rf=RowFilter.regexFilter(jTextFieldFiltrar.getText(),0);
+        sorter.setRowFilter(rf);
+    }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,8 +187,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonFiltrar;
     private javax.swing.JLabel jLabelSeleccionado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAlumnos;
+    private javax.swing.JTextField jTextFieldFiltrar;
     // End of variables declaration//GEN-END:variables
 }
