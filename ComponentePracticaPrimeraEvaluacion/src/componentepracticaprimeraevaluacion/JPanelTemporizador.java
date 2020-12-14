@@ -28,8 +28,10 @@ public class JPanelTemporizador extends JPanel {
     private TemporizadorListener temporizadorListener;
    
     
+    
         private ActionListener acciones = new ActionListener(){
 
+          
         @Override
         public void actionPerformed(ActionEvent ae) {
             ++cs; 
@@ -52,25 +54,27 @@ public class JPanelTemporizador extends JPanel {
         
     };
         
+        public void iniciar(ActionListener acciones){
+             t = new javax.swing.Timer(10, acciones);
+        t.start();
+          
+        }
+        
         
            private void actualizarLabel() {
+            
        tiempo = (h<=9?"0":"")+h+":"+(m<=9?"0":"")+m+":"+(s<=9?"0":"")+s+":"+(cs<=9?"0":"")+cs;
         labelTemporizador.setText(tiempo);
         
     }
     public JPanelTemporizador() {
-      
-        
-       
-     
-
-        
-        
-        this.addMouseListener(new MouseAdapter(){
+        initComponents();
+          iniciar(acciones);
+          
+     this.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent me) {
-
-                t.stop();
+ 
            
             temporizadorListener.parar();
 
@@ -79,9 +83,9 @@ public class JPanelTemporizador extends JPanel {
    
         
         });
-        initComponents();
-           t = new javax.swing.Timer(10, acciones);
+         t = new javax.swing.Timer(10, acciones);
         t.start();
+          
     }
 
     public TemporizadorListener getTemporizadorListener() {
@@ -110,14 +114,16 @@ public class JPanelTemporizador extends JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelTemporizador, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(labelTemporizador, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelTemporizador, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelTemporizador, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
