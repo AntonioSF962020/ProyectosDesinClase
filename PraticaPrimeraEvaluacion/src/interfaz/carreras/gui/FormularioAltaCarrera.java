@@ -51,7 +51,6 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
         jTextFieldLugar_carrera = new javax.swing.JTextField();
         jTextFieldNumero_participantes = new javax.swing.JTextField();
         jButtonAlta_carrera = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,8 +71,6 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText("Formulario registro corredor");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,8 +80,6 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(60, 60, 60)
                         .addComponent(jButtonAlta_carrera))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -125,9 +120,7 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldNumero_participantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAlta_carrera)
-                    .addComponent(jButton2))
+                .addComponent(jButtonAlta_carrera)
                 .addContainerGap(98, Short.MAX_VALUE))
         );
 
@@ -159,7 +152,7 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonAlta_carreraActionPerformed
 
   
-    private boolean validarFormulario(){
+    private boolean validarFormulario(){ //Validar el formulario de alta
         SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
         String nombre=jTextFieldNombre_carrera.getText();
       
@@ -191,7 +184,6 @@ public class FormularioAltaCarrera extends javax.swing.JDialog {
       
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAlta_carrera;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
